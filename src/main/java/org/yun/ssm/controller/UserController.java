@@ -21,18 +21,37 @@ import java.util.List;
  * @Date 2019/9/7 22:34
  */
 //4、@restcontroller注解的功能等同于@controller和@responsebody
-@RestController("/user")
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired(required=true)
     private UserService userService;
 
-    //跳转首页（登录页）
-    @RequestMapping("/toIndex")
-    public String show(){
-        return "index";
+
+    @RequestMapping("/test")
+    public String login(){
+        List<UserVO> list = userService.findAll();
+        for (UserVO userVO : list) {
+            System.out.println(userVO.getName());
+            System.out.println("连接数据库成功，查看控制台信息");
+        }
+        return "连接数据库失败";
     }
 
+
+
+
+
+
+    @RequestMapping("/hello")
+    public String hello() {
+        return "Hello World !";
+    }
+
+
+
+    //http://localhost:8080/user/login?name=总&password=1234
     @RequestMapping("/login")
     public String login(@RequestParam(name = "name") String name ,
                         @RequestParam(name = "password") String password){
