@@ -14,7 +14,8 @@ spring:
   #热部署：修改后台文件保存后自动重启
   devtools:
     restart:
-      enabled=true:
+      enabled: true
+      spring-boot-devtools: src/main/java  //监听目录
   #thymeleag   配置视图解析器
   thymeleaf:
     prefix: classpath:/templates/
