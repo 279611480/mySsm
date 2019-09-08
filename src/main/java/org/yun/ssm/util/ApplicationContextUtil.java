@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * @ClassName ApplicationContextUtil
  * @Description TODO
- * @Autor 拾笔丶
+ * @Autor 落笔丶
  * @Date 2019/9/8 11:37
  */
 @ComponentScan

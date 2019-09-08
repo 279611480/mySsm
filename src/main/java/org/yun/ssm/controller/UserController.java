@@ -1,15 +1,11 @@
 package org.yun.ssm.controller;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.yun.ssm.service.UserService;
-import org.yun.ssm.service.impl.UserServiceImpl;
 import org.yun.ssm.vo.UserVO;
 
 import java.util.List;
@@ -17,7 +13,7 @@ import java.util.List;
 /**
  * @ClassName UserController
  * @Description TODO
- * @Autor 拾笔丶
+ * @Autor 落笔丶
  * @Date 2019/9/7 22:34
  */
 //4、@restcontroller注解的功能等同于@controller和@responsebody
@@ -27,8 +23,15 @@ public class UserController {
 
     @Autowired(required=true)
     private UserService userService;
-
-
+    
+    /**
+    *
+     * @Author 落笔丶
+     * @Description  测试是否连接到数据库方法
+     * @Date  2019/9/8 21:32
+     * @Param  * @param null
+     * @return
+     **/
     @RequestMapping("/test")
     public String login(){
         List<UserVO> list = userService.findAll();
@@ -39,11 +42,7 @@ public class UserController {
         return "连接数据库失败";
     }
 
-
-
-
-
-
+    
     @RequestMapping("/hello")
     public String hello() {
         return "Hello World !";
