@@ -4,7 +4,18 @@ spring:
     url: jdbc:mysql://localhost:3306/my_springboot_ssm?serverTimezone=UTC
     username: root
     password: 1234
-#thymeleag   配置视图解析器
+    # druid连接池
+    druid:
+      initial-size: 1 #初始化连接数
+      min-idle: 1 #最小空闲连接
+      max-active: 20 #最大活动连接
+      test-on-borrow: true #获取连接时测试是否可用
+      stat-view-servlet.allow: true #监控页面启动
+  #热部署：修改后台文件保存后自动重启
+  devtools:
+    restart:
+      enabled=true:
+  #thymeleag   配置视图解析器
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
@@ -15,7 +26,6 @@ spring:
     servlet:
       content-type: text/html
 
-#thymeleaf end
 
 
 
