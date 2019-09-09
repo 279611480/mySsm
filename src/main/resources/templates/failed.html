@@ -1,0 +1,19 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>失败页面</title>
+</head>
+<body>
+    <div>
+        <span>信息 ModelAndView：</span><span th:text="${message}"></span>
+    </div>
+<!--
+  <a href="/user/register">点击，跳转至注册页面</a>
+-->
+    <form action="/user/index" method="post">
+        <button type="submit">返回首页</button>
+    </form>
+</body>
+</html>
