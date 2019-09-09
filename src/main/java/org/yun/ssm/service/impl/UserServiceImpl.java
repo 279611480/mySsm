@@ -2,11 +2,14 @@ package org.yun.ssm.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import org.yun.ssm.mapper.UserMapper;
 import org.yun.ssm.service.UserService;
 import org.yun.ssm.vo.UserVO;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @ClassName UserServiceImpl
@@ -25,7 +28,27 @@ public class UserServiceImpl implements UserService {
         return userMapper.findAll();
     }
 
-/*
+
+    @Override
+    public boolean findByName(String name) {
+         String userName = userMapper.findByName(name);
+         if (StringUtils.isEmpty(userName)){
+             return false;
+         }
+         return true;
+    }
+
+
+    @Override
+    @Transactional//开始事物注解
+    public void add(String name, String password){
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        userMapper.add(uuid , name,password);
+    }
+
+
+
+    /*
     @Override
     public PageInfo<FactoryVO> listPage(@RequestBody FactoryDTO dto) {
         PageHelper.startPage(dto.getPageNum(),dto.getPageSize());

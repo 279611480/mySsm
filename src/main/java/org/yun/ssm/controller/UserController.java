@@ -2,7 +2,9 @@ package org.yun.ssm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.yun.ssm.service.UserService;
 import org.yun.ssm.vo.UserVO;
@@ -140,7 +142,14 @@ public class UserController {
     }
 
 
-    //每次都有值
+    /*
+    * 登录名：null
+    密码：null
+
+    登录名：111
+    密码：111
+        *
+    * */
     @GetMapping("/login3")
     public String login3(
 
@@ -156,7 +165,7 @@ public class UserController {
 
 
     /*
-    * 第一次没值
+    * 第一次没值（这里没有值，很正常，以为调用的是从  request中获取，请求参数，所以没有值，是正常的【第一次无值】      而login方法一开始就有值，是因为一开始就没有使用request方法）
     * 登录名：null
     密码：null
     //输入改变
@@ -177,15 +186,76 @@ public class UserController {
     }
 
 
+    /**
+    *
+     * @Author 落笔丶
+     * @Description 注册
+     * @Date  2019/9/9 22:52
+     * @Param  * @param null
+     * @return
+     **/
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    @ResponseBody//此处算是，正常的前后台交互，前台传数据，后台接收，且业务处理      需要加上此注解，否则报错org.thymeleaf.exceptions.TemplateInputException:   需要返回Json数据  而不是@Controller的Spring视图了
+    public String register(HttpServletRequest request){
+        String name = request.getParameter("name");
+        String password = request.getParameter("password");
+        if (StringUtils.isEmpty(name) || StringUtils.isEmpty(password)){
+            return "用户名，或者密码为空";
+        }
+        if(userService.findByName(name) == true){
+            return "该用户名已被注册";
+        }
+        userService.add(name,password);
+        return "注册成功";
+    }
 
+    @PostMapping("/register2")
+    public ModelAndView register2(HttpServletRequest request){
+        String name = request.getParameter("name");
+        String password = request.getParameter("password");
+        ModelAndView modelAndView = new ModelAndView();
+        if (StringUtils.isEmpty(name) || StringUtils.isEmpty(password)){
+           modelAndView.addObject("message","注册用户名与密码不可为空");
+           modelAndView.setViewName("failed");
+           return modelAndView;
+        }
+        if(userService.findByName(name) == true){
+            modelAndView.addObject("message","该用户名已被注册");
+            modelAndView.setViewName("failed");
+            return modelAndView;
+        }
+        userService.add(name,password);
+        System.out.println("注册成功，跳转至登录页");
+        modelAndView.setViewName("login");
+        return modelAndView;
+    }
 
-
-
-
-
-
-
-
+    /**
+    *
+     * @Author 落笔丶
+     * @Description 真正意义上的，登录----（1）一开始，未登录过，所以，拿不到任何用回信息（2）加上用户是不可以重复的（3）所以，此处登录完全不做任何，关于findById的处理
+     * @Date  2019/9/9 23:21
+     * @Param  * @param null
+     * @return
+     **/
+    @RequestMapping("/loginEnd")
+    public String loginEnd(WebRequest request){//request也可以这么拿  SpringMvc中
+        String name = request.getParameter("name");
+        String password = request.getParameter("password");
+        if (StringUtils.isEmpty(name) || StringUtils.isEmpty(password)   ){
+            System.out.println("登录失败");
+            return "failed";
+        }
+        List<UserVO> all = userService.findAll();
+        for (UserVO userVO : all) {
+            if (userVO.getName().equals(name) && userVO.getPassword().equals(password)) {
+                //登录成功
+                return "index";
+            }
+        }
+        //登录失败
+        return "用户名  密码未注册";
+    }
 
 
 
