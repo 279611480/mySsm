@@ -1,5 +1,6 @@
 package org.yun.ssm.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -33,6 +34,7 @@ import java.util.Map;
 //@RestController
 @Controller
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
 
     @Autowired(required=true)
@@ -246,11 +248,13 @@ public class UserController {
             System.out.println("登录失败");
             return "failed";
         }
+        log.debug("查询开始");
         List<UserVO> all = userService.findAll();
+        log.debug("查询结束");
         for (UserVO userVO : all) {
             if (userVO.getName().equals(name) && userVO.getPassword().equals(password)) {
                 //登录成功
-                return "index";
+                return "login";
             }
         }
         //登录失败

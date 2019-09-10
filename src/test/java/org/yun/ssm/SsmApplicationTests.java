@@ -1,5 +1,6 @@
 package org.yun.ssm;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class SsmApplicationTests {
 
     @Autowired
@@ -25,4 +27,20 @@ public class SsmApplicationTests {
         }
     }
 
+    /**
+    *
+     * @Author 落笔丶
+     * @Description  测试log日志
+     * @Date  2019/9/10 21:44
+     * @Param  * @param null
+     * @return
+     **/
+    @Test
+    public void logTest(){
+        String id = "1";
+        log.info("测试开始~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        UserVO userVO = userService.findById(id);
+        log.info("测试结束~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+    }
 }

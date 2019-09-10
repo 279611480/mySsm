@@ -17,6 +17,9 @@ public interface UserService {
     @RequestMapping("/user/add")
     void add(@RequestParam("name") String name,@RequestParam("password") String password);
 
+    @RequestMapping("/user/findById")
+    UserVO findById(@RequestParam("id") String id);
+
 
 /*
 //条件查询

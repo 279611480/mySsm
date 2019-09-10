@@ -32,6 +32,8 @@ public interface UserMapper  {
     //INSERT INTO `user` VALUES(5,'555','888',666);
     @Insert("INSERT INTO `user` VALUES( #{uuid} ,#{name},#{password},666)")
     void add(@Param("uuid") String uuid,@Param("name") String name,@Param("password") String password);
+    @Select("SELECT * FROM user WHERE id=#{id}")
+    UserVO findById(@Param("id") String id);
 
     //    @Update("UPDATE ad_space SET copy_id = #{copyId} WHERE id = #{id}")
 }

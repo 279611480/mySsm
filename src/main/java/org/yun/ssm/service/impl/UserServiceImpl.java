@@ -46,7 +46,10 @@ public class UserServiceImpl implements UserService {
         userMapper.add(uuid , name,password);
     }
 
-
+    @Override
+    public UserVO findById(String id) {
+        return userMapper.findById(id);
+    }
 
     /*
     @Override
