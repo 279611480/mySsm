@@ -27,6 +27,12 @@ spring:
     servlet:
       content-type: text/html
 
+# 日志文档处，打印Sql语句
+logging:
+  config: classpath:logback.xml
+  level:
+    org.yun.ssm.mapper: DEBUG
+
 
 
 
