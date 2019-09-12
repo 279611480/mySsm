@@ -101,8 +101,11 @@
             <!--简单来讲就是  B继承A父项目   此特性不会传给子项目  需要子项目重新依赖Jar包-->
             <optional>true</optional>
         </dependency>
-
-
+        <!-- spring security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
 
     </dependencies>
