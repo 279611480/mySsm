@@ -4,6 +4,10 @@ spring:
     url: jdbc:mysql://localhost:3306/my_springboot_ssm?serverTimezone=UTC
     username: root
     password: 1234
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
     # druid连接池
     druid:
       initial-size: 1 #初始化连接数
@@ -15,7 +19,7 @@ spring:
   devtools:
     restart:
       enabled: true
-      spring-boot-devtools: src/main/java  //监听目录
+      spring-boot-devtools: src/main/java  #监听目录
   #thymeleag   配置视图解析器
   thymeleaf:
     prefix: classpath:/templates/
