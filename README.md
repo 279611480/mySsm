@@ -15,11 +15,17 @@ SpringBoot整合SSM(全注解   HTML   不使用.xml)
 自己的就一直是  简单的User表,至于数据内容，emmm就自己随便加吧
 
 CREATE TABLE `user` (
+
   `id` varchar(228) NOT NULL,
+
   `name` varchar(50) DEFAULT NULL,
+  
   `password` varchar(50) DEFAULT NULL,
+  
   `age` int(11) DEFAULT NULL,
+  
   PRIMARY KEY (`id`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='SSM测试用户表'
 
 
