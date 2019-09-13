@@ -12,7 +12,8 @@ SpringBoot整合SSM(全注解   HTML   不使用.xml)
 且，使其不与之前搭配的SSM控制层的URL  冲突---->见SecurityConfig.class配置文件，指明忽略了（不拦截） /user/**的所有Url
 
 关于Sql语句，这里面
-自己的就一直是  简单的User表
+自己的就一直是  简单的User表,至于数据内容，emmm就自己随便加吧
+
 CREATE TABLE `user` (
   `id` varchar(228) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
