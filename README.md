@@ -8,5 +8,4 @@ SpringBoot整合SSM(全注解   HTML   不使用.xml)
 03.分支2019_09_11SpringSecurity(3)_01      表示，在02.的基础上，集成了SpringSecurity   实现简单的例子，
 且，使其不与之前搭配的SSM控制层的URL  冲突---->见SecurityConfig.class配置文件，指明忽略了（不拦截） /user/**的所有Url
 
-04.分支2019_09_13SpringSecurity(4)_01   开始，建立数据库表（用户  权限   用户权限中间表   三张，且开始，一个例子）
 
