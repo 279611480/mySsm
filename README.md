@@ -31,3 +31,4 @@ CREATE TABLE `user` (
 
 
 
+看完这部分代码  可以去看https://github.com/279611480/ssmandsecurity代码  与数据库打交道，因为不想在这里重开分支，将主干打乱（原本想法是纯粹的弄一个SpringBoot整合SSM  不适用xml文件的    所以，重开项目）
