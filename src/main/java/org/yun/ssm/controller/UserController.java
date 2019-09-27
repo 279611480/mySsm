@@ -16,7 +16,7 @@ import java.util.Map;
 
 /**
  * @ClassName UserController
- * @Description TODO
+ * @Description
  * @Autor 落笔丶
  * @Date 2019/9/7 22:34
  */
@@ -26,8 +26,8 @@ import java.util.Map;
 * 倘若正式开发（公司），自己不是全栈式，那么，此处@Controller  应该改为 @RestController   或者不变，但是在每个方法上面加上注解@ResposeBody表示返回Json数据给前台
 * */
 
-//4、@restcontroller注解的功能等同于@controller和@responsebody
-    //redponsebody就是标识方法只返回字符串不进行视图跳转
+//4、@RestController注解的功能等同于@controller和@responsebody
+// responsebody就是标识方法只返回字符串不进行视图跳转
     //如果，公司，自己只负责后台   那么，可以使用此注解
     //像这个 因为是自己玩  前后台交互 下面的 login   ，加上@RestControlletr会报400 URL错误
 //@RestController
